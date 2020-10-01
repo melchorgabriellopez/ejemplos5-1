@@ -30,8 +30,14 @@ namespace ejemplos5_1
             bool Estatus;
 
 
+             IdAlumno=0;
+             Nombre="Pedro Antonio";
+             FechaNacimiento=DateTime.Now;
+             Estatus=false;
 
-
+                                  
+                            
+             Console.Write(Nombre+IdAlumno); 
 
         }
     }
