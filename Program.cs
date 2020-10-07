@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ejemplos5_1
 {
@@ -8,147 +10,159 @@ namespace ejemplos5_1
         static void Main(string[] args)
         {
 
-            //  [ambito] (tipo de dato) Nombre variable [valor];
 
-            // public,private y protected
 
-            //numero, caracateres, boleanos , objetos y de usuario
-            //int  2.147.483.648 a 2.147.483.647, float,double, decimal,long ,short 32 768, byte 255,  
-            //string
-            //bool true o false
+            // for, while, do while , foreach
 
-            // private int IdEmpleado = 1;
+            //for  (inicio;condicion; incremento ){} 
             /*
-                        int IdAlumno;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            Console.WriteLine(i);
+                        }
 
-                        string Nombre;
+                        for (int i = 30; i < 33; i++)
+                        {
+                            Console.WriteLine(i);
+                        }
 
-                        DateTime FechaNacimiento;
+                        for (int i = 100; i >= 0; i -= 10)
+                        {
+                            Console.WriteLine(i);
+                        }
 
-                        float Calificacion=1;
-
-                        int Calificacion2=1;
-                        bool Estatus;
-
-                        var Sueldo;
-
-                         IdAlumno=0;
-                         Nombre="Pedro Antonio";
-                         FechaNacimiento=DateTime.Now;
-                         Estatus=false;
-
-                         Console.Write(Nombre); 
-               */
-
-            //operadore : matematicos, logicos, comparacion 
-
-            //  +,-,*,/,   \ % V =
-            //  &&=>y  ||=>o  ~=>no
-            //  >, <, >=, <=, ==, ===, != !==
+            */
+            //while(condicion){ validarcondicion}  
+            /*
+                        int i = 0;
+                        while (i < 3)
+                        {
+                            Console.WriteLine(i);
+                            i++;
+                        }
 
 
-            int Suma;
-            int Resta;
-            int Numero1 = 5;
-            int Numero2 = 15;
-            int Numero3 = 10;
-
-            Suma = Numero1 + Numero2;
-            Resta = Numero2 - Numero1;
-
-            Console.WriteLine(Suma);
-            Console.WriteLine(Resta);
-            Console.WriteLine(Numero1 * Numero2);
-
-
-            //Condicionales if,  switch ,  () ? : 
-
-            //if(condiciones){}[else][else if] 
-
-            if (Numero3 != 0)
-                Console.WriteLine(Numero1 / Numero3);
-            else
-                Console.WriteLine("No se puede hacer divicion por cero");
+                        bool bandera =true;
+                        i = 0;
+                        while (bandera == false )
+                        {
+                            if (i == 3)
+                            {
+                                bandera = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine(i);
+                                i++;
+                            }
+                        }
+            */
 
 
-            if (Numero1 % 2 == 0)
-            {
-                Console.WriteLine("Es Par");
-            }
-            else
-            {
-                Console.WriteLine("Es Impar");
-            }
+            // do{}while(condicion) 
+            /*
+                        int i = 5;
+                        do
+                        {
+                            Console.WriteLine(i);
+                            i++;
+                        } while (i < 3);
+            */
+            /*
+                        List<string> cadenas = new List<string>();
+                        cadenas.Add("Cadena1");
+                        cadenas.Add("Cadena2");
+                        cadenas.Add("Cadena3");
+                        cadenas.Add("Cadena4");
+                        cadenas.Add("Cadena5");
+                        cadenas.Add("Cadena2");
+                        cadenas.Add("Cadena3");
+                        cadenas.Add("Cadena4");
+                        cadenas.Add("Cadena5");
+                        cadenas.Add("Cadena2");
+                        cadenas.Add("Cadena3");
+                        cadenas.Add("Cadena4");
+                        cadenas.Add("Cadena5");
+                        cadenas.Add("Cadena2");
+                        cadenas.Add("Cadena3");
+                        cadenas.Add("Cadena4");
+                        cadenas.Add("Cadena5");
+                        cadenas.Add("Cadena2");
+                        cadenas.Add("Cadena3");
+                        cadenas.Add("Cadena4");
+                        cadenas.Add("Cadena5");
+                        cadenas.Add("Cadena2");
+                        cadenas.Add("Cadena3");
+                        cadenas.Add("Cadena4");
+                        cadenas.Add("Cadena5");
+
+                        foreach (string cadena in cadenas)
+                        {
+                            Console.WriteLine(cadena);
+                        }
+
+            */
+            //arreglos  tipodato[] NombreArreglo = new tipodato[];
+            /*
+                        int[] Enteros = new int[10000];
+
+                        for (int i = 0; i < 100; i++)
+                        {
+                            Enteros[i] = i + 1;
+                        }
+
+                        int Suma = 0;
 
 
-            if (Numero1 > Numero2)
-            {
-                if (Numero1 > Numero3)
-                    Console.WriteLine($"{Numero1} es mayor");
-                else
-                {
-                    if (Numero3 > Numero2)
-                        Console.WriteLine($"{Numero3} es mayor");
-                    else
-                        Console.WriteLine($"{Numero2} es mayor");
-                }
-            }
-            else
-            {
-                if (Numero2 > Numero3)
-                    Console.WriteLine($"{Numero2} es mayor");
-                else
-                {
-                    if (Numero3 > Numero1)
-                        Console.WriteLine($"{Numero3} es mayor");
-                    else
-                        Console.WriteLine($"{Numero1} es mayor");
-                }
-            }
+                        foreach (int entero in Enteros)
+                        {
+                            Suma = Suma + entero;
+                        }
 
-            if (Numero1 > Numero2 && Numero1 > Numero3)
-                Console.WriteLine($"{Numero1} es mayor");
-            else
-            {
-                if (Numero2 > Numero1 && Numero2 > Numero3)
-                    Console.WriteLine($"{Numero2} es mayor");
-                else
-                    Console.WriteLine($"{Numero3} es mayor");
-            }
+                        Console.WriteLine(Suma);
+
+                        // List<Tipo> variable = new List<Tipo>();
+
+                        List<int> ListEnteros = new List<int>();
 
 
-            /* switch (valor)
-            {
-                case caso1:
-                   instruccion
-                   break;
-                case caso2:
-                    instruccion   
-                    breack;
-                default:
-                Instruccion
-                break;
-            } 
-        */
+                        for (int i = 0; i < 100; i++)
 
-           int opcion=10;
-      
-           switch (opcion) 
-           {
-              case 1:
-                 Console.Write("se tecle 1") ;
-                 break;
-              case 2:  
-              Console.Write("se tecle 2") ;
-                 break;
-              default:
-              Console.Write("No existe la opcion deseada") ;
-                 break;    
-           } 
+                        {
+                            ListEnteros.Add(i + 1);
+                        }
 
-           
-            Console.ReadKey();
 
+                        int SumaLista = 0;
+                         foreach (int entero in ListEnteros)
+                         {
+                             SumaLista += entero;
+
+                         }
+
+                        SumaLista = ListEnteros.Sum();
+
+                        Console.WriteLine(SumaLista);
+
+            */
+
+            SumaNumeros(15, 10);
+            SumaNumeros(150, 1);
+            SumaNumeros(35, 25);
+        
+            int resultado=SumaNumeros2(15,SumaNumeros2(25,50)); 
+            Console.WriteLine(resultado);          
         }
+
+        static void SumaNumeros(int numero1, int numero2)
+        {
+            Console.WriteLine(numero1 + numero2);
+        }
+
+       static int SumaNumeros2(int numero1, int numero2)
+        {
+            return numero1 + numero2;
+        }
+
     }
 }
