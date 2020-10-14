@@ -7,61 +7,27 @@ namespace Clases
 {
     public class Program
     {
-
         static void Main(string[] args)
         {
-
-
-            /*     Alumno alumno = new Alumno();
-                 alumno.Id = 1;
-                 alumno.Nombre = "Pedro Perez";
-                 alumno.Sexo = Sexo.Hombre;
-                 alumno.FechaNacimiento = DateTime.Now;
-
-                 Alumno alumno2 = new Alumno(2, "Maria
-                  Mercedez", Sexo.Mujer);
-                // Console.WriteLine($"{alumno.Nombre} {alumno.FechaNacimiento}");
-
-                 List<Alumno> alumnos = new List<Alumno>();
-
-                 alumnos.Add(new Alumno { Id = 0, Nombre = "Pedro Perez", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Hombre });
-                 alumnos.Add(new Alumno { Id = 1, Nombre = "Maria Soto", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Mujer,Activo=false });
-                 alumnos.Add(new Alumno { Id = 2, Nombre = "Juan Hernandez", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Hombre });
-                 alumnos.Add(new Alumno { Id = 3, Nombre = "Carla Lopez", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Mujer });
-                 alumnos.Add(new Alumno { Id = 4, Nombre = "Fernando Soberanes", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Hombre });
-                 alumnos.Add(new Alumno { Id = 5, Nombre = "Jose Martinez", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Hombre });
-                 alumnos.Add(new Alumno { Id = 6, Nombre = "Fabio Ureta", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Hombre });
-                 alumnos.Add(new Alumno { Id = 7, Nombre = "Idelma Lopez", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Mujer });
-                 alumnos.Add(new Alumno { Id = 8, Nombre = "Idalia Parra", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Mujer });
-                 alumnos.Add(new Alumno { Id = 9, Nombre = "Israel Olivas", FechaNacimiento = DateTime.Parse("25/01/1979"), Sexo = Sexo.Hombre });
-
-                  foreach(Alumno item in alumnos.Where(a=>a.Sexo==Sexo.Mujer && !a.Activo))
-                  {
-                      Console.WriteLine($"{item.Id} {item.Nombre} {item.FechaNacimiento} {item.Sexo}");
-                  }
-
-                var Materia= alumno.Materias[0].Nombre;
-                var Profesor= alumno.Materias[0].Profesor ;  
-0
-
-     */
             int Salir = 0;
-
-
-
-
             while (Salir == 0)
             {
                 Console.Clear();
                 Console.WriteLine("Menu");
-                Console.WriteLine("_____________________");
-                Console.WriteLine("ALta alumno ........1");
-                Console.WriteLine("Listar alumno ......2");
-                Console.WriteLine("ALta Materia .......3");
-                Console.WriteLine("Listar Materia......4");
-                Console.WriteLine("Salir  .............0");
-                Console.WriteLine("_____________________");
-
+                Console.WriteLine("___________________________");
+                Console.WriteLine("ALta alumno ..............1");
+                Console.WriteLine("Borrar todos alumnos......2");
+                Console.WriteLine("Borrar alumno.............3");
+                Console.WriteLine("Modificar alumno..........4");
+                Console.WriteLine("Listar alumno ............5");
+                Console.WriteLine("Alta Materia .............6");
+                Console.WriteLine("Borar todas las materias..7");
+                Console.WriteLine("Borrar Materia............8");
+                Console.WriteLine("Modificar materia.........9");
+                Console.WriteLine("Listar Materia...........10");
+                Console.WriteLine("Salir  ...................0");
+                Console.WriteLine("____________________________");
+                Console.Write("Opcion =>           ");
                 int opcion = int.Parse(Console.ReadLine());
                 switch (opcion)
                 {
@@ -71,14 +37,37 @@ namespace Clases
                     case 1:
                         Guardar();
                         break;
-                    case 2:
-                        Listar();
-                        break;
 
+                    case 2:
+                        BaseDatos.BorrarListaAlumno();
+                        Console.WriteLine("Se borro la lista correctamente...");
+                        Console.ReadKey();
+                        break;
                     case 3:
-                        GuardarMateria();
+                        borrarAlumno();
                         break;
                     case 4:
+                        actualizarAlumno();
+                        break;    
+                    case 5:
+                        Listar();
+                        break;
+                    case 6:
+                        GuardarMateria();
+                        break;                   
+                    case 7:
+                        BaseDatos.BorrarListaMateria();
+                        Console.WriteLine("Se borro la lista correctamente...");
+                        Console.ReadKey();
+                        break;          
+                    case 8:
+                        BorrarMateria();
+                        break;
+                   
+                    case 9:
+                        ActualizarMateria();
+                        break;   
+                    case 10:
                         ListarMaterias();
                         break;
                     default:
@@ -87,7 +76,75 @@ namespace Clases
 
             }
         }
+        private static void ActualizarMateria()
+        {
+             Console.Clear();
+            Console.WriteLine("Borrar materia");
+            Console.WriteLine("_________________________");
 
+            Materia materia = new Materia();
+            Console.WriteLine("Codigo");
+            var Codigo = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Nombre");
+            materia.Nombre=Console.ReadLine();  
+
+            BaseDatos.Actualizar(Codigo,materia);
+
+
+            Console.WriteLine("_________________________");
+            Console.WriteLine("Se modifico correctamente");
+            Console.ReadKey();
+        }
+        private static void BorrarMateria()
+        {
+           Console.Clear();
+            Console.WriteLine("Borrar materia");
+            Console.WriteLine("_________________________");
+            Console.WriteLine("Codigo");
+            var Codigo = int.Parse(Console.ReadLine());
+
+            BaseDatos.BorrarMateria(Codigo);
+
+            Console.WriteLine("_________________________");
+            Console.WriteLine("Se borro correctamente");
+            Console.ReadKey();
+        }
+        private static void actualizarAlumno()
+        {
+            Console.Clear();
+            Console.WriteLine("Borrar alumno");
+            Console.WriteLine("_________________________");
+
+            Alumno alumno = new Alumno();
+            Console.WriteLine("Codigo");
+            var Codigo = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Nombre");
+            alumno.Nombre=Console.ReadLine();  
+
+            BaseDatos.Actualizar(Codigo,alumno);
+
+
+            Console.WriteLine("_________________________");
+            Console.WriteLine("Se modifico correctamente");
+            Console.ReadKey();
+        }
+        private static void borrarAlumno()
+        {
+            Console.Clear();
+            Console.WriteLine("Borrar alumno");
+            Console.WriteLine("_________________________");
+            Console.WriteLine("Codigo");
+            var Codigo = int.Parse(Console.ReadLine());
+
+            BaseDatos.BorrarAlumno(Codigo);
+
+            Console.WriteLine("_________________________");
+            Console.WriteLine("Se borro correctamente");
+            Console.ReadKey();
+
+        }
         private static void ListarMaterias()
         {
             Console.Clear();
@@ -104,7 +161,6 @@ namespace Clases
             Console.WriteLine("Precione una tecla para continuar...");
             Console.ReadKey();
         }
-
         private static void GuardarMateria()
         {
             Console.Clear();
@@ -126,8 +182,6 @@ namespace Clases
 
 
         }
-
-
         static void Guardar()
         {
 
@@ -149,7 +203,6 @@ namespace Clases
             Console.WriteLine("Se guardo correctamente");
             Console.ReadKey();
         }
-
         static void Listar()
         {
 
@@ -167,9 +220,5 @@ namespace Clases
             Console.ReadKey();
         }
 
-
     }
-
-
-
 }
